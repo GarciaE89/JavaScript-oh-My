@@ -16,7 +16,7 @@ function pwLength() {
         alert("Password should be at least 8 charaters long");
         pwLength();
     } else if (passwordLength > 128) {
-        alert("Password cannot exceed 128 charaters"):
+        alert("Password cannot exceed 128 charaters");
         pwLength();
     } else {
         alert("Select character types")
@@ -30,7 +30,7 @@ function pwLength() {
 function uppercase() {
     uppercaseCheck = prompt("Do you want upppercase letters?");
     uppercaseCheck = uppercaseCheck.toLowerCase();
-    if (uppercaseCheck === null) || uppercaseCheck === "") {
+    if (uppercaseCheck === null || uppercaseCheck === "") {
         alert("Do you you want uppercase letter Yes or No?");
         determineUppercase();
     } else if (uppercaseCheck === "yes") {
@@ -51,7 +51,7 @@ function determineNumbers() {
     numberCheck = prompt("Do you want numbers?")
     numberCheck = numberCheck.toLocaleLowerCase();
 
-    if (numberCheck === null)
+    if (numberCheck === null){
         alert("Do you want numbers? Yes or No ");
     determineNumbers();
 } else if (numberCheck === "yes") {
@@ -68,42 +68,56 @@ else {
 }
 return numberCheck;
 }
+function determineSpecial(){
+    SpecialCheck = prompt ("Do you want a special characters?")
+    SpecialCheck = SpecialCheck.toLocaleLowerCase();
+    if (SpecialCheck === "yes"){
+        SpecialCheck = true;
+        return SpecialCheck;
+    }
+    else {
+        SpecialCheck = false;
+        return SpecialCheck;
+    }
+}
 
 function generatePassword() {
-    determineLength();
+    pwLength();
     console.log(pwLength);
-    determineUppercase();
+    uppercase();
     console.log(uppercaseCheck);
     determineNumbers();
     console.log(numberCheck);
     determineSpecial();
-    console.log(specialCheck);
+    console.log(SpecialCheck);
 
-    var characters = lowercaseChar;
+    var characters = lowerCase;
     var password = "";
-    if (uppercaseCheck && numberCheck && specialCheck) {
-        characters += uppercaseChar + numberChar + specialChar;
+    if (uppercaseCheck && numberCheck && SpecialCheck) {
+        characters += upperCase + numbers + specialCharacters;
 
     } else if (uppercaseCheck && numberCheck) {
-        characters += uppercaseChar + numberChar;
+        characters += upperCase + numbers;
+;
 
     } else if (numberCheck && specialCheck) {
-        characters += numberChar + specialChar;
+        characters += numbers + specialCharacters;
+;
 
     } else if (uppercaseCheck && specialCheck) {
-        characters += uppercaseChar + specialChar;
-
+        characters += upperCase+ specialCharacters;
+;
     } else if (uppercaseCheck) {
-        characters += uppercaseChar;
+        characters += upperCase;
 
     } else if (numberCheck) {
-        characters += numberChar;
+        characters += numbers;
 
     } else if (specialCheck) {
-        characters += specialChar;
+        characters += specialCharacters;
 
     } else {
-        characters === lowercaseChar;
+        characters = lowerCase;
     }
 
     for (var i = 0; i < passwordLength; i++) {
