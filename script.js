@@ -5,9 +5,9 @@ var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "0123456789";
 var specialCharacters = "!#%$&'()*+,-./:;<=>?@[\]^_`{|}~"
 var passwordLength;
-var uppercaseCheck;
-var numberCheck;
-var SpecialCheck;
+var uppercaseCheck = false;
+var numberCheck = false;
+var SpecialCheck = false;
 // the function below should provide guidance on password length
 function pwLength() {
     passwordLength = prompt("what is the desired password length? (Must be between 8-128 Characters):");
@@ -28,57 +28,21 @@ function pwLength() {
 
 
 function uppercase() {
-    uppercaseCheck = prompt("Do you want upppercase letters Yes or No?");
-    uppercaseCheck = uppercaseCheck.toLowerCase();
-    if (uppercaseCheck === null || uppercaseCheck === "") {
-        alert("Do you you want uppercase letter Yes or No?");
-        determineUppercase();
-    } else if (uppercaseCheck === "yes") {
-        uppercaseCheck = true;
-        return uppercaseCheck;
-
-    } else if (uppercaseCheck === "no") {
-        uppercaseCheck = false;
-        return uppercaseCheck;
-    }
-    else {
-        alert("Please select Yes or No")
-    }
+    uppercaseCheck = confirm("Do you want upppercase letters?");
+    
     return uppercaseCheck;
 }
 
 function determineNumbers() {
-    numberCheck = prompt("Do you want numbers Yes or No?")
-    numberCheck = numberCheck.toLocaleLowerCase();
-
-    if (numberCheck === null){
-        alert("Do you want numbers? Yes or No ");
-    determineNumbers();
-} else if (numberCheck === "yes") {
-    numberCheck = true;
-    return numberCheck;
-}
-else if (numberCheck === "no") {
-    numberCheck = false;
-    return numberCheck;
-}
-else {
-    alert("Do you want numbers? Yes or No");
-    determineNumbers();
-}
-return numberCheck;
+    numberCheck = confirm ("Do you want numbers Yes or No?")
+    
+return numberCheck
 }
 function determineSpecial(){
-    SpecialCheck = prompt ("Do you want a special characters Yes or No?")
-    SpecialCheck = SpecialCheck.toLocaleLowerCase();
-    if (SpecialCheck === "yes"){
-        SpecialCheck = true;
+    SpecialCheck = confirm ("Do you want a special characters Yes or No?")
+    
         return SpecialCheck;
-    }
-    else {
-        SpecialCheck = false;
-        return SpecialCheck;
-    }
+    
 }
 
 function generatePassword() {
@@ -93,32 +57,29 @@ function generatePassword() {
 
     var characters = lowerCase;
     var password = "";
-    if (uppercaseCheck && numberCheck && SpecialCheck) {
-        characters += upperCase + numbers + specialCharacters;
+    if (!uppercaseCheck && !numberCheck && !SpecialCheck) {
+        return;
 
-    } else if (uppercaseCheck && numberCheck) {
-        characters += upperCase + numbers;
+    } 
+    if (uppercaseCheck) {
+        characters += upperCase 
 ;
 
-    } else if (numberCheck && specialCheck) {
-        characters += numbers + specialCharacters;
-;
-
-    } else if (uppercaseCheck && specialCheck) {
-        characters += upperCase+ specialCharacters;
-;
-    } else if (uppercaseCheck) {
-        characters += upperCase;
-
-    } else if (numberCheck) {
+    } 
+     if (numberCheck) {
         characters += numbers;
+;
 
-    } else if (specialCheck) {
+    } if (uppercaseCheck) {
+        characters += upperCase;
+;
+    }
+
+     
+    if (SpecialCheck) {
         characters += specialCharacters;
 
-    } else {
-        characters = lowerCase;
-    }
+    } 
 
     for (var i = 0; i < passwordLength; i++) {
         password += characters.charAt(Math.floor(Math.random() * characters.length));
