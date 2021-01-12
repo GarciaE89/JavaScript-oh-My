@@ -28,7 +28,7 @@ function pwLength() {
 
 
 function uppercase() {
-    uppercaseCheck = prompt("Do you want upppercase letters?");
+    uppercaseCheck = prompt("Do you want upppercase letters Yes or No?");
     uppercaseCheck = uppercaseCheck.toLowerCase();
     if (uppercaseCheck === null || uppercaseCheck === "") {
         alert("Do you you want uppercase letter Yes or No?");
@@ -48,7 +48,7 @@ function uppercase() {
 }
 
 function determineNumbers() {
-    numberCheck = prompt("Do you want numbers?")
+    numberCheck = prompt("Do you want numbers Yes or No?")
     numberCheck = numberCheck.toLocaleLowerCase();
 
     if (numberCheck === null){
@@ -69,7 +69,7 @@ else {
 return numberCheck;
 }
 function determineSpecial(){
-    SpecialCheck = prompt ("Do you want a special characters?")
+    SpecialCheck = prompt ("Do you want a special characters Yes or No?")
     SpecialCheck = SpecialCheck.toLocaleLowerCase();
     if (SpecialCheck === "yes"){
         SpecialCheck = true;
